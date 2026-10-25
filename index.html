@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173d32">
+  <title>CampusDesk — Student Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="CampusDesk home">
+        <span class="brand-mark">C<span>+</span></span>
+        <span class="brand-copy"><strong>CampusDesk</strong><small>STUDENT SERVICES</small></span>
+      </a>
+      <div class="campus-label">CAMPUS OFFICE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-link active" data-view="overview"><span class="nav-icon">◫</span>Overview</button>
+        <button class="nav-link" data-view="students"><span class="nav-icon">♙</span>Students <span class="nav-count" id="navStudentCount">6</span></button>
+        <button class="nav-link" data-view="attendance"><span class="nav-icon">✓</span>Attendance</button>
+        <button class="nav-link" data-view="courses"><span class="nav-icon">▤</span>Courses</button>
+        <button class="nav-link" data-view="reports"><span class="nav-icon">↗</span>Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-dot"></span><strong>Need a hand?</strong><p>Keep campus records tidy and up to date.</p><button data-view="settings">Open settings →</button></div>
+        <div class="profile">
+          <div class="avatar avatar-dark">AA</div>
+          <div class="profile-info"><strong>Aswin Aprem</strong><small>Administrator</small></div>
+          <span class="profile-menu">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb">Campus office <span>/</span> <strong id="crumb">Overview</strong></div>
+        <div class="top-actions">
+          <span class="date-pill" id="todayDate">MON, 20 OCT</span>
+          <button class="icon-button" id="exportTop" title="Export student list">⇩</button>
+          <div class="avatar avatar-green">AA</div>
+        </div>
+      </header>
+
+      <section class="view active" id="view-overview">
+        <div class="welcome-row">
+          <div><p class="eyebrow">MONDAY • CAMPUS SNAPSHOT</p><h1>A clearer view of <em>campus life.</em></h1><p class="subtitle">Manage student records, attendance and course information in one calm workspace.</p></div>
+          <button class="primary-button" data-action="add-student"><span>＋</span> Add student</button>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total students</span><span class="stat-symbol sage">♙</span></div><div class="stat-value" id="statStudents">06</div><div class="stat-foot"><span class="tiny-dot green-dot"></span> Active student records</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Attendance today</span><span class="stat-symbol orange">✓</span></div><div class="stat-value" id="statAttendance">83<span class="unit">%</span></div><div class="stat-foot"><span class="trend-up">↗ Live demo data</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span>Courses</span><span class="stat-symbol lilac">▤</span></div><div class="stat-value" id="statCourses">04</div><div class="stat-foot">Across academic departments</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Needs attention</span><span class="stat-symbol pink">!</span></div><div class="stat-value" id="statAttention">02</div><div class="stat-foot">Demo follow-up reminders</div></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel roster-panel">
+            <div class="panel-heading"><div><p class="eyebrow">STUDENT DIRECTORY</p><h2>Recently added</h2></div><button class="text-button" data-view="students">View all students ↗</button></div>
+            <div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>COURSE</th><th>YEAR</th><th>STATUS</th></tr></thead><tbody id="recentStudents"></tbody></table></div>
+          </article>
+          <article class="panel attendance-panel">
+            <div class="panel-heading"><div><p class="eyebrow">DAILY CHECK-IN</p><h2>Attendance overview</h2></div><span class="live-label"><span></span> DEMO</span></div>
+            <div class="attendance-visual"><div class="donut" id="attendanceDonut"><div><strong id="donutValue">83%</strong><small>Present</small></div></div><div class="attendance-legend"><div><span class="legend-dot present"></span><span>Present</span><strong id="presentCount">5</strong></div><div><span class="legend-dot absent"></span><span>Absent</span><strong id="absentCount">1</strong></div><div><span class="legend-dot pending"></span><span>Not marked</span><strong id="pendingCount">0</strong></div></div></div>
+            <button class="secondary-button full-button" data-view="attendance">Manage attendance <span>→</span></button>
+          </article>
+        </div>
+        <div class="bottom-grid">
+          <article class="panel quick-panel"><div class="panel-heading"><div><p class="eyebrow">QUICK ACCESS</p><h2>Get things done</h2></div></div><div class="quick-actions"><button data-action="add-student"><span class="quick-icon q-green">＋</span><span><strong>Register a student</strong><small>Add a new student record</small></span><b>↗</b></button><button data-view="attendance"><span class="quick-icon q-orange">✓</span><span><strong>Mark attendance</strong><small>Update today's register</small></span><b>↗</b></button><button data-view="reports"><span class="quick-icon q-purple">↗</span><span><strong>Export records</strong><small>Download a CSV report</small></span><b>↗</b></button></div></article>
+          <article class="quote-panel"><span class="quote-mark">“</span><p>Good records make room for better learning.</p><small>THE CAMPUSDESK PRINCIPLE</small><div class="quote-lines"><i></i><i></i><i></i></div></article>
+        </div>
+      </section>
+
+      <section class="view" id="view-students">
+        <div class="page-heading"><div><p class="eyebrow">CAMPUS DIRECTORY</p><h1>Student <em>records.</em></h1><p class="subtitle">Browse, add, edit or remove demo student records.</p></div><button class="primary-button" data-action="add-student">＋ Add student</button></div>
+        <div class="panel directory-panel"><div class="directory-toolbar"><div class="search-box"><span>⌕</span><input id="studentSearch" type="search" placeholder="Search name, ID or course…"></div><select id="courseFilter" aria-label="Filter by course"><option value="">All courses</option><option>BCA</option><option>B.Com</option><option>BA English</option><option>B.Sc Computer Science</option></select><button class="secondary-button" id="exportStudents">Export CSV ↓</button></div><div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>STUDENT ID</th><th>COURSE</th><th>YEAR</th><th>EMAIL</th><th>STATUS</th><th></th></tr></thead><tbody id="studentRows"></tbody></table></div><div class="table-footer"><span id="studentResultCount">Showing 6 students</span><span>Local demo workspace</span></div></div>
+      </section>
+
+      <section class="view" id="view-attendance">
+        <div class="page-heading"><div><p class="eyebrow">DAILY REGISTER</p><h1>Attendance <em>desk.</em></h1><p class="subtitle">Mark attendance for the sample student list. Changes are saved in this browser.</p></div><div class="heading-actions"><input class="date-input" type="date" id="attendanceDate"><button class="primary-button" id="saveAttendance">Save register</button></div></div>
+        <div class="attendance-summary"><div class="mini-stat"><span>Present</span><strong id="attPresent">0</strong></div><div class="mini-stat"><span>Absent</span><strong id="attAbsent">0</strong></div><div class="mini-stat"><span>Not marked</span><strong id="attUnmarked">0</strong></div><div class="mini-stat"><span>Attendance rate</span><strong id="attRate">0%</strong></div></div>
+        <div class="panel directory-panel"><div class="panel-heading"><div><p class="eyebrow">MARK THE REGISTER</p><h2>Today's students</h2></div><button class="text-button" id="markAllPresent">Mark all present</button></div><div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>COURSE</th><th>YEAR</th><th>ATTENDANCE STATUS</th></tr></thead><tbody id="attendanceRows"></tbody></table></div></div>
+      </section>
+
+      <section class="view" id="view-courses">
+        <div class="page-heading"><div><p class="eyebrow">ACADEMIC PROGRAMMES</p><h1>Courses & <em>classes.</em></h1><p class="subtitle">A simple overview of the courses represented in this demo.</p></div></div>
+        <div class="course-grid" id="courseGrid"></div>
+        <div class="note-banner"><span>i</span><p><strong>Demo note:</strong> Course counts update when student records are added or edited. Course details are sample content for this front-end demonstration.</p></div>
+      </section>
+
+      <section class="view" id="view-reports">
+        <div class="page-heading"><div><p class="eyebrow">DATA & SUMMARIES</p><h1>Reports <em>centre.</em></h1><p class="subtitle">Download the records currently stored in this browser.</p></div></div>
+        <div class="report-grid"><article class="report-card"><span class="report-icon sage">♙</span><p class="eyebrow">DIRECTORY</p><h2>Student register</h2><p>Export student IDs, names, courses, year, email and status as a CSV file.</p><button class="secondary-button" id="reportStudents">Download CSV ↓</button></article><article class="report-card"><span class="report-icon orange">✓</span><p class="eyebrow">DAILY RECORD</p><h2>Attendance register</h2><p>Export the selected date's attendance statuses for all listed students.</p><button class="secondary-button" id="reportAttendance">Download CSV ↓</button></article><article class="report-card"><span class="report-icon lilac">▤</span><p class="eyebrow">OVERVIEW</p><h2>Course summary</h2><p>Download a summary of how many demo students are enrolled in each course.</p><button class="secondary-button" id="reportCourses">Download CSV ↓</button></article></div>
+        <div class="panel report-info"><div><p class="eyebrow">PRIVACY & STORAGE</p><h2>Where does this demo save data?</h2><p>Student and attendance changes are stored in your browser using localStorage. They do not sync between devices or submit to a real college server. Use sample data only.</p></div><span class="storage-icon">⌘</span></div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="page-heading"><div><p class="eyebrow">WORKSPACE PREFERENCES</p><h1>Settings & <em>about.</em></h1><p class="subtitle">Project information and demo configuration.</p></div></div>
+        <div class="settings-grid"><article class="panel settings-panel"><p class="eyebrow">PROJECT DETAILS</p><h2>CampusDesk</h2><p>A front-end student management dashboard concept for organizing basic campus records, attendance and course information.</p><div class="detail-row"><span>Student developer</span><strong>Aswin Aprem</strong></div><div class="detail-row"><span>Roll number</span><strong>21</strong></div><div class="detail-row"><span>Registration number</span><strong>17120</strong></div><div class="detail-row"><span>Hosting target</span><strong>GitHub Pages</strong></div></article><article class="panel settings-panel"><p class="eyebrow">DEMO CONTROLS</p><h2>Manage local data</h2><p>Restore the starter records if you want to reset the demonstration.</p><button class="secondary-button" id="resetDemo">Restore sample data</button><div class="warning-note">Resetting replaces records saved in this browser with the original sample list.</div></article></div>
+      </section>
+      <footer class="footer"><span>CampusDesk <span class="footer-dot">•</span> Student services, simplified.</span><span>Academic project demo · 2026</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="studentModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-heading"><div><p class="eyebrow">STUDENT DIRECTORY</p><h2 id="modalTitle">Add a student</h2></div><button class="close-button" id="closeModal" aria-label="Close">×</button></div><form id="studentForm"><input type="hidden" id="editStudentId"><label>Full name<input id="studentName" required maxlength="70" placeholder="e.g. Alex Thomas"></label><div class="form-row"><label>Student ID<input id="studentId" required maxlength="20" placeholder="CD2026-007"></label><label>Academic year<select id="studentYear" required><option value="1st Year">1st Year</option><option value="2nd Year">2nd Year</option><option value="3rd Year">3rd Year</option></select></label></div><label>Course<select id="studentCourse" required><option>BCA</option><option>B.Com</option><option>BA English</option><option>B.Sc Computer Science</option></select></label><label>Email address<input id="studentEmail" type="email" required placeholder="student@example.com"></label><label>Status<select id="studentStatus"><option>Active</option><option>Pending</option><option>Inactive</option></select></label><div class="modal-actions"><button type="button" class="secondary-button" id="cancelModal">Cancel</button><button type="submit" class="primary-button">Save student</button></div></form></div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
