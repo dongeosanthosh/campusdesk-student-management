@@ -28,9 +28,9 @@ A responsive front-end demo for managing student records, daily attendance, and 
 GitHub Pages hosts static files only. This version is a front-end demo; it does not run a Java backend or connect to a shared database. Records are stored in the current browser only, so they do not sync across devices. Do not enter real or sensitive student information.
 
 ## Student details
-- Student: Aswin Aprem
-- Roll No.: 21
-- Registration No.: 17120
+- Student: Don Geo Santhosh
+- Roll No.: 30
+- Registration No.: 17129
 
 ## Demo data
 All included student names and emails are fictional sample data.
